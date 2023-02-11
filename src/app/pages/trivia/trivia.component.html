@@ -8,13 +8,10 @@
           Time Left: 10s
         </div>
        </div>
-       <div class="question-container">
-        <div class="question">
-         How many days are there in febuary?
+       <div class="question-container" *ngIf ="triviaService.questionData.length != 0">
+        <div class="question" [innerHtml] = "triviaService.questionData[questionIndex].question">       
         </div>
-       <button class= "option" mat-button>33</button>
-       <button class= "option" mat-button>44</button>
-       <button class= "option" mat-button>55</button>
+       <button class= "option" mat-button *ngFor ="let answer of triviaService.questionData[questionIndex].incorrect_answers" [innerHTML] ="answer"></button>
        </div>
     </div>
 </div>

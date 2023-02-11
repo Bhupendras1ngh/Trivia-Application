@@ -9,7 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { TriviaComponent } from './pages/trivia/trivia.component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { TriviaComponent } from './pages/trivia/trivia.component';
     AppRoutingModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
