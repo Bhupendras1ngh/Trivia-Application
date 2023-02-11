@@ -20,7 +20,7 @@ export class TriviaComponent {
  ngOnInit(){
   this.triviaService.getQuestions().subscribe(
     (res:any)=>{
-      //console.log(res);
+      console.log(res);
       this.triviaService.questionData = res.results;
       console.log(this.triviaService.questionData)
       this.triviaService.questionData[this.questionIndex].incorrect_answers.push(this.triviaService.questionData[this.questionIndex].correct_answer);

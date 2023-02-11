@@ -35,9 +35,11 @@ export class TriviaService {
         );
       }
       else{
+         console.log(res[0])
           if(res[0].score < score){
+            
             res[0].score =score;
-            this.http.put("http://localhost:3000/leaderboard/'" + res[0].id ,res[0]).subscribe((res0=>{
+            this.http.put("http://localhost:3000/leaderboard/" + res[0].id ,res[0]).subscribe((res0=>{
               console.log(res);
             }));
           }
