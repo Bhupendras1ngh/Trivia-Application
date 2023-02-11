@@ -49,3 +49,11 @@
     margin-top: 10px;
     background-color: gray;
 }
+.correct-option{
+    background-color: rgb(11, 246, 30);
+    color: white;
+}
+.wrong-option{
+    background-color: rgb(203, 31, 26);
+    color: white;
+}
