@@ -2,20 +2,22 @@
     <div class="content-wrapper">
        <div class="top-container">
         <div class="score-container">
-          score :{{score}}
+          score : {{score}}
         </div>
         <div class="timer-container">
-          Time Left: 10s
+          Time Left: {{countDown}}
         </div>
        </div>
        <div class="question-container" *ngIf ="triviaService.questionData.length != 0">
         <div class="question" [innerHtml] = "triviaService.questionData[questionIndex].question">       
         </div>
-       <button (click) ="selectAnswer(answer)" [class.correct-option]="userAnser == answer && userAnser ==triviaService.questionData[questionIndex].correct_answer " 
+       <button (click) ="selectAnswer(answer)" 
+       [class.correct-option]="userAnser == answer && userAnser ==triviaService.questionData[questionIndex].correct_answer  || userAnser != '' && userAnser != answer && answer ==triviaService.questionData[questionIndex].correct_answer || userAnser == '' && countDown == 0  && answer ==triviaService.questionData[questionIndex].correct_answer"
+      
+       [class.wrong-option]="userAnser == answer && userAnser !=triviaService.questionData[questionIndex].correct_answer " 
        class= "option" mat-button 
        *ngFor ="let answer of triviaService.questionData[questionIndex].incorrect_answers" 
        [innerHTML] ="answer"
-       [class.wrong-option]="userAnser == answer && userAnser !=triviaService.questionData[questionIndex].correct_answer " 
        ></button>
        </div>
     </div>

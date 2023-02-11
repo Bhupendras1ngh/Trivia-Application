@@ -13,6 +13,7 @@ export class TriviaComponent {
  questionIndex = 0;
  userAnser ="";
  score =0;
+ countDown =15;
 
 
 
@@ -25,6 +26,17 @@ export class TriviaComponent {
       this.triviaService.questionData[this.questionIndex].incorrect_answers.push(this.triviaService.questionData[this.questionIndex].correct_answer);
       this.triviaService.questionData[this.questionIndex].incorrect_answers.sort(()=>0.5 - Math.random());
       console.log(this.triviaService.questionData[this.questionIndex].incorrect_answers)
+      let timer = setInterval(()=>{
+       
+       if( this.userAnser == "" && this.countDown !=0 )this.countDown--;
+       if(this.countDown ==0){
+        clearInterval(timer);
+        this.triviaService.updateScore(this.score);
+        setTimeout(()=>{
+          this.router.navigate(['/home'])
+        } ,4000)
+       }
+      } ,1000)
     }
   )
  }
@@ -38,12 +50,15 @@ export class TriviaComponent {
       this.questionIndex++;
       this.triviaService.questionData[this.questionIndex].incorrect_answers.push(this.triviaService.questionData[this.questionIndex].correct_answer);
       this.triviaService.questionData[this.questionIndex].incorrect_answers.sort(()=>0.5 - Math.random());
-    } ,2000) 
+      this.countDown =15;
+    } ,4000) 
   }
   else{
+    this.triviaService.updateScore(this.score)
     setTimeout(()=>{
     this.router.navigate(['/home'])
-    }, 2000)
+    }, 4000)
   }
  }
+
 }
